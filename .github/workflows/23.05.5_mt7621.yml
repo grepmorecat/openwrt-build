@@ -28,12 +28,19 @@ jobs:
         run: |
           cd openwrt
           git checkout v23.05.5
+
+      # Step 4.1: Update feeds
+      - name: Update feeds
+        run: |
+          cd openwrt
+          ./scripts/feeds update -a && ./scripts/feeds install -a
           
       # Step 5: Set up configuration (optional: use an existing .config)
-      - name: Set up configuration
+      - name: Set up configuration and expand .config
         run: |
           cd openwrt
           wget https://downloads.openwrt.org/releases/23.05.5/targets/ramips/mt7621/config.buildinfo -O .config
+          make defconfig
 
       # Step 6: Run the build process (skips menuconfig by using defconfig or pre-configured .config)
       - name: Build OpenWRT
