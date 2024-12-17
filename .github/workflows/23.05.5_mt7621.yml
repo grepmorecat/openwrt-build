@@ -1,0 +1,49 @@
+name: OpenWRT Build 23.05.5 mt7621
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up the environment
+      - name: Set up OpenWRT build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential ccache git libncurses5-dev zlib1g-dev gawk flex gettext wget libssl-dev xsltproc unzip python3
+
+      # Step 3: Clone the OpenWRT repository (if not already in the repository)
+      - name: Clone OpenWRT repository
+        run: |
+          git clone https://git.openwrt.org/openwrt/openwrt.git
+
+      # Step 4: Checkout the correct branch
+      - name: Checkout OpenWRT branch
+        run: |
+          cd openwrt
+          git checkout v23.05.5
+          
+      # Step 5: Set up configuration (optional: use an existing .config)
+      - name: Set up configuration
+        run: |
+          cd openwrt
+          wget https://downloads.openwrt.org/releases/23.05.5/targets/ramips/mt7621/config.buildinfo -O .config
+
+      # Step 6: Run the build process (skips menuconfig by using defconfig or pre-configured .config)
+      - name: Build OpenWRT
+        run: |
+          cd openwrt
+          make -j$(nproc)
+
+      # Step 7: Archive the build artifacts (optional)
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: openwrt-build
+          path: openwrt/bin/
