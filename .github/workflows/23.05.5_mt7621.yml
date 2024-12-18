@@ -45,7 +45,7 @@ jobs:
       - name: Build OpenWRT
         run: |
           cd openwrt
-          make -j$(nproc) defconfig download clean world
+          make -j$(nproc) defconfig download world
 
       # Step 7: Archive the build artifacts (optional)
       - name: Archive build artifacts
