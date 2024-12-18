@@ -47,9 +47,16 @@ jobs:
           cd openwrt
           make -j$(nproc) defconfig download world
 
-      # Step 7: Archive the build artifacts (optional)
+      # Step 7: Archive the build artifacts
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: openwrt-build
+          name: build
+          path: openwrt/bin/
+
+      # Step 7.1: Archive the build artifacts (targets only)
+      - name: Archive targets
+        uses: actions/upload-artifact@v3
+        with:
+          name: targets
           path: openwrt/bin/targets/
