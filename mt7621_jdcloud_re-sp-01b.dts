@@ -1,4 +1,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+/*
+ * Author: aiamadeus <42570690+aiamadeus@users.noreply.github.com>
+ * Modified by: Jin 
+ */
+
 /dts-v1/;
 
 #include "mt7621.dtsi"
