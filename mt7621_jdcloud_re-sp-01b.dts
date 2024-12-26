@@ -93,7 +93,7 @@
 
 					macaddr_config_4429: macaddr@4429 {
 						compatible = "mac-base";
-						reg = <0x4429 0x12>;
+						reg = <0x4429 0xC>;
 						#nvmem-cell-cells = <1>;
 					};
 				};
