@@ -44,6 +44,11 @@ jobs:
       - name: patch the TARGET_DEVICES list
         run: |
           cat jdcloud_re-sp-01b.TARGET_DEVICES >> openwrt/target/linux/ramips/image/mt7621.mk
+
+      # Step 5.2: patch the dts
+      - name: patch the dts
+        run: |
+          cp mt7621_jdcloud_re-sp-01b.dts openwrt/target/linux/ramips/dts/
           
       # Step 6: Run the build process
       - name: Build OpenWRT
