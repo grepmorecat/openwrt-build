@@ -49,6 +49,11 @@ jobs:
       - name: patch the dts
         run: |
           cp mt7621_jdcloud_re-sp-01b.dts openwrt/target/linux/ramips/dts/
+
+      # Step 5.3: patch the port config
+      - name: patch the port config
+        run: |
+          patch openwrt/target/linux/ramips/mt7621/base-files/etc/board.d/02_network < 02_network.patch
           
       # Step 6: Run the build process
       - name: Build OpenWRT
