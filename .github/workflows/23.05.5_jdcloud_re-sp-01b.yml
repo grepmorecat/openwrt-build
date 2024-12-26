@@ -38,14 +38,12 @@ jobs:
       # Step 5: Set up configuration
       - name: Set up configuration and expand .config
         run: |
-          cd openwrt
-          cp ${{ github.action_path }}/jdcloud_re-sp-01b.buildinfo .config
+          cp jdcloud_re-sp-01b.buildinfo openwrt/.config
       
       # Step 5.1: patch the TARGET_DEVICES list
       - name: patch the TARGET_DEVICES list
         run: |
-          cd openwrt
-          cat ${{ github.action_path }}/jdcloud_re-sp-01b.TARGET_DEVICES >> target/linux/ramips/image/mt7621.mk
+          cat jdcloud_re-sp-01b.TARGET_DEVICES >> openwrt/target/linux/ramips/image/mt7621.mk
           
       # Step 6: Run the build process
       - name: Build OpenWRT
