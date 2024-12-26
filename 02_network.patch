@@ -1,0 +1,10 @@
+--- 02_network	2024-12-26 20:00:15.247752728 +0800
++++ 02_network_jdc	2024-12-26 20:02:19.090032909 +0800
+@@ -85,6 +85,7 @@
+ 	iodata,wn-deax1800gr|\
+ 	iptime,a3002mesh|\
+ 	jcg,q20|\
++	jdcloud,re-sp-01b|\
+ 	lenovo,newifi-d1|\
+ 	mikrotik,routerboard-m33g|\
+ 	mts,wg430223|\
