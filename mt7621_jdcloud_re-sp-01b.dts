@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+
 /*
  * Author: aiamadeus <42570690+aiamadeus@users.noreply.github.com>
  * Modified by: Jin 
@@ -16,10 +17,10 @@
 	model = "JDCloud RE-SP-01B";
 
 	aliases {
-		led-boot = &led_red;
-		led-failsafe = &led_red;
-		led-running = &led_green;
-		led-upgrade = &led_blue;
+		led-boot = &led_status_red;
+		led-failsafe = &led_status_red;
+		led-running = &led_status_green;
+		led-upgrade = &led_status_blue;
 		label-mac-device = &gmac0;
 	};
 
@@ -40,19 +41,22 @@
 	leds {
 		compatible = "gpio-leds";
 
-		led_red: red {
-			label = "jdcloud:red:sys";
+		led_status_red: led-red {
+			function = LED_FUNCTION_STATUS;
+			color = <LED_COLOR_ID_RED>;
 			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 			panic-indicator;
 		};
 
-		led_green: green {
-			label = "jdcloud:green:sys";
+		led_status_green: led-green {
+			function = LED_FUNCTION_STATUS;
+			color = <LED_COLOR_ID_GREEN>;
 			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
 		};
 
-		led_blue: blue {
-			label = "jdcloud:blue:sys";
+		led_status_blue: led-blue {
+			function = LED_FUNCTION_STATUS;
+			color = <LED_COLOR_ID_BLUE>;
 			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
 		};
 	};
