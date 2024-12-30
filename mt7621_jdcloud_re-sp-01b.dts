@@ -152,13 +152,13 @@
 &gmac1 {
 	status = "okay";
 	label = "wan";
-	phy-handle = <&ethphy4>;
+	phy-handle = <&ethphy0>;
 
 	nvmem-cells = <&macaddr_config_4429 0x400000>;
 	nvmem-cell-names = "mac-address";
 };
 
-&ethphy4 {
+&ethphy0 {
 	/delete-property/ interrupts;
 };
 
