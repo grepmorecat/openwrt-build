@@ -1,4 +1,4 @@
-name: build OpenWRT for jdcloud_re-sp-01b (with ext4 support)
+name: build OpenWRT for jdcloud_re-sp-01b (eth0 mac set)
 
 on:
   workflow_dispatch:
