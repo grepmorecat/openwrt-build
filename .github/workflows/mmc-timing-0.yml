@@ -1,5 +1,4 @@
 name: mmc-timing-0
-# config with removing the patch-831
 
 on:
   workflow_dispatch:
@@ -20,7 +19,7 @@ jobs:
         run: |
           git clone https://github.com/grepmorecat/openwrt.git
           cd openwrt
-          git checkout mmc-non-removable
+          git checkout mmc-timing
           ./scripts/feeds update -a && ./scripts/feeds install -a
           
       - name: create .config
@@ -30,10 +29,6 @@ jobs:
       - name: patch device package depedencies
         run: |
           patch openwrt/target/linux/ramips/image/mt7621.mk < ext4_support.diff
-
-      - name: remove patch 831
-        run: |
-          rm openwrt/target/linux/ramips/patches-6.6/831-mmc-mtk-sd-initialize-pad-delay-and-drive-strength.patch
       
       - name: Build OpenWRT
         run: |
