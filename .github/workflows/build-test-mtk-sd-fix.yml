@@ -20,7 +20,7 @@ jobs:
           git clone https://github.com/grepmorecat/openwrt.git
           cd openwrt
 
-          git remote add test-fork https://github.com/DragonBluep/openwrt.git
+          git remote add test-fork git@github.com:DragonBluep/openwrt.git
 
           git checkout add-support-jdcloud
           git fetch test-fork
