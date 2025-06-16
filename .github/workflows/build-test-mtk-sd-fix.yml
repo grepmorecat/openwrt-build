@@ -1,4 +1,4 @@
-name: build test mtk-sd fix
+name: build test-mtk-mmc-fix
 
 on:
   workflow_dispatch:
@@ -19,12 +19,7 @@ jobs:
         run: |
           git clone https://github.com/grepmorecat/openwrt.git
           cd openwrt
-
-          git remote add test-fork git@github.com:DragonBluep/openwrt.git
-
-          git checkout add-support-jdcloud
-          git fetch test-fork
-          git cherry-pick  2000279^..b61ac3a
+          git checkout mtk-mmc
           ./scripts/feeds update -a && ./scripts/feeds install -a
           
       - name: create .config
